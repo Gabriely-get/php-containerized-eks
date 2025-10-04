@@ -23,7 +23,7 @@ jobs:
       - name: Start LocalStack
         run:
           |
-            localstack auth set-token ${{ secret.LOCALSTACK_AUTH_TOKEN }}
+            localstack auth set-token ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
             localstack start
       - name: Troubleshooting LocalStack
         run:
