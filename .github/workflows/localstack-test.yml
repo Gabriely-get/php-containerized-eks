@@ -63,6 +63,9 @@ jobs:
       - name: Configure kubectl
         run:
           |
+            aws configure set aws_access_key_id mock_access_key
+            aws configure set aws_secret_access_key mock_secret_key
+            aws configure set default.region us-east-1
             awslocal eks update-kubeconfig --name php-cluster 
             kubectl config use-context arn:aws:eks:us-east-1:000000000000:cluster/php-cluster
             kubectl get nodes -o wide
