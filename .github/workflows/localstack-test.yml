@@ -58,7 +58,7 @@ jobs:
               bucket = "my-bucket"
             }
             EOF
-      - name: Init terraform and plan
+      - name: Plan and Apply
         run: 
           | 
             terraform init
@@ -66,4 +66,9 @@ jobs:
             terraform validate
             terraform plan -out planbucket
             terraform apply -auto-approve planbucket
+      - name: List resource
+        run: 
+          |
+            awslocal s3 ls
+            aws s3 ls
             
