@@ -55,6 +55,6 @@ jobs:
             terraform init
             terraform fmt
             terraform validate
-            terraform plan
-            terraform apply
+            terraform plan -out planbucket
+            terraform apply -auto-approve planbucket
             
