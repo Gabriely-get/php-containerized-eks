@@ -1,0 +1,17 @@
+name: LocalStack Demo
+run-name: ${{ github.actor }} is testing out local stack with GitHub Actions 🚀
+
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  There-is-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: has docker
+        run: docker version
+      - name: Set up docker
+        uses: docker/setup-docker-action@v4.3.0
+      - name: check docker again
+        run: docker version
