@@ -60,6 +60,11 @@ jobs:
         run: 
           |
             awslocal eks list-clusters
+      - name: Configure kubectl
+        run:
+          |
+            awslocal eks update-kubeconfig --name php-cluster 
+            kubectl config use-context arn:aws:eks:us-east-1:000000000000:cluster/php-cluster
             kubectl get nodes -o wide
   Test-Job-State:
     runs-on: ubuntu-latest
