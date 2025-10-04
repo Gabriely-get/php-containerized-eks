@@ -20,7 +20,18 @@ jobs:
             curl --output localstack-cli-4.9.1-linux-amd64-onefile.tar.gz --location https://github.com/localstack/localstack-cli/releases/download/v4.9.1/localstack-cli-4.9.1-linux-amd64-onefile.tar.gz
             sudo tar xvzf localstack-cli-4.9.1-linux-*-onefile.tar.gz -C /usr/local/bin
       - run: localstack --version
+      - name: Start LocalStack
+        run:
+          |
+            localstack auth set-token ${{ secret.LOCALSTACK_AUTH_TOKEN }}
+            localstack start
+      - name: Troubleshooting LocalStack
+        run:
+          | 
+            localstack logs
+            curl -s localhost:4566/_localstack/diagnose
   Setup-tf-config:
+    needs: Setup-local-stack
     runs-on: ubuntu-latest
     steps:
       - name: HashiCorp - Setup Terraform
