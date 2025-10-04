@@ -60,6 +60,7 @@ jobs:
         run: 
           |
             awslocal eks list-clusters
+            kubectl get nodes -o wide
   Test-Job-State:
     runs-on: ubuntu-latest
     needs: Setup-LocalStack-and-TF
@@ -67,7 +68,6 @@ jobs:
       - name: Check previously installed dependencies
         run:
           |
-            ls terraform
             terraform version
             localstack --version
             awslocal s3 ls
