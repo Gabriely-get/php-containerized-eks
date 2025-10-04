@@ -49,8 +49,12 @@ jobs:
               bucket = "my-bucket"
             }
             EOF
-      - run: 
+      - name: Init terraform and plan
+        run: 
           | 
-            ls
-            cat main.tf
+            terraform init
+            terraform fmt
+            terraform validate
+            terraform plan
+            terraform apply
             
