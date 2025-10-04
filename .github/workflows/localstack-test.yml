@@ -40,7 +40,11 @@ jobs:
         uses: hashicorp/setup-terraform@v2.0.3
       - run: terraform version
       - name: Try find .aws
-        run: find / -type d -name '.aws'
+        run: 
+          |
+            ls -a ~/
+            ls -a /home
+            ls -a /home/runner/ 
       - name: Plan and Apply
         run: 
           | 
