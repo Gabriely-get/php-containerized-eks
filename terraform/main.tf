@@ -63,9 +63,9 @@ resource "aws_subnet" "az1" {
 resource "aws_eks_cluster" "php" {
   name = "php-cluster"
 
-  access_config {
-    authentication_mode = "API"
-  }
+#   access_config {
+#     authentication_mode = "API"
+#   }
 
   role_arn = aws_iam_role.cluster.arn
   version  = "1.31"
