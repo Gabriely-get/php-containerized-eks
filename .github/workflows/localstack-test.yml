@@ -18,19 +18,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-      # - name: Install
-      #   run:
-      #     | 
-      #       curl --output localstack-cli-4.9.1-linux-amd64-onefile.tar.gz --location https://github.com/localstack/localstack-cli/releases/download/v4.9.1/localstack-cli-4.9.1-linux-amd64-onefile.tar.gz
-      #       sudo tar xvzf localstack-cli-4.9.1-linux-*-onefile.tar.gz -C /usr/local/bin
-      - name: Setup LocalStack
-        uses: localstack/setup-localstack@v0.2.4
+      - name: Install LocalStack
+        run:
+          | 
+            curl --output localstack-cli-4.9.1-linux-amd64-onefile.tar.gz --location https://github.com/localstack/localstack-cli/releases/download/v4.9.1/localstack-cli-4.9.1-linux-amd64-onefile.tar.gz
+            sudo tar xvzf localstack-cli-4.9.1-linux-*-onefile.tar.gz -C /usr/local/bin
+      # - name: Setup LocalStack
+      #   uses: localstack/setup-localstack@v0.2.4
       - run: localstack --version
-      # - name: Start LocalStack
-      #   run:
-      #     |
-      #       localstack auth set-token ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
-      #       localstack start -d
+      - name: Start LocalStack
+        run:
+          |
+            localstack auth set-token ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
+            localstack start -d
       - name: Troubleshooting LocalStack
         run:
           | 
@@ -47,10 +47,10 @@ jobs:
             terraform init
             terraform fmt
             terraform validate
-            terraform plan -out planbucket
-            terraform apply -auto-approve planbucket
+            terraform plan -out planeks
+            terraform apply -auto-approve planeks
       - name: List resource
         run: 
           |
-            awslocal s3 ls
+            awslocal eks list-clusters
             
