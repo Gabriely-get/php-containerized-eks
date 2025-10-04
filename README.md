@@ -34,4 +34,5 @@ Todos os direitos reservados da API: https://github.com/FarrelAD/Basic-PHP-RESTf
 [X] Testar aws cli com localstack </br>
 [ ] Criar arquivo de definição de infraestrutura cluster EKS </br>
 [ ] Testar kubectl CLI para manusear infraestrutura </br>
+[ ] Subir pod de teste para validar deploy da infra </br>
 [ ] Validar cluster EKS </br>
