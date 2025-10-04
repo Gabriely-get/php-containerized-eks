@@ -1,4 +1,10 @@
 ## Timeline de Ações
+
+### API
+[ ] Escolher repositorio PHP para clonar
+[ ] Executar API PHP com sqlite
+
+### Infraestrutura
 [x] Instalar e iniciar LocalStack na Action </br>
 [x] Criar resource de teste com TF referenciando o LocalStack </br>
 [x] Testar aws cli com localstack </br>
