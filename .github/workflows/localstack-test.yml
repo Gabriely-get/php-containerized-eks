@@ -70,5 +70,4 @@ jobs:
         run: 
           |
             awslocal s3 ls
-            aws s3 ls
             
