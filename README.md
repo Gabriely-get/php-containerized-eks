@@ -1,8 +1,8 @@
 ## Timeline de Ações
 
 ### API
-[ ] Escolher repositorio PHP para clonar
-[ ] Executar API PHP com sqlite
+[ ] Escolher repositorio PHP para clonar </br>
+[ ] Executar API PHP com sqlite </br>
 
 ### Infraestrutura
 [x] Instalar e iniciar LocalStack na Action </br>
