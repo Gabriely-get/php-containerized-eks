@@ -13,7 +13,7 @@ WORKDIR /home/apiuser
 COPY config ./config
 COPY src ./src
 COPY public ./public
-COPY db ./db
+RUN mkdir db
 
 RUN chown -R www-data:www-data * 
 RUN chmod -R o+w /home/apiuser
