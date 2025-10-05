@@ -15,6 +15,11 @@ Decidi criar a seção *Timeline de Ações* no próprio arquivo README para reg
 - Decidi provisionar sim o cluster, pois sendo sincera, me incomoda pensar que "os arquivos terraform e manifestos k8s funcionam em teoria". </br>
 Logo lembrei da tecnologia LocalStack, que emula o ambiente cloud localmente. Nunca utilizei, mas após alguns testes na pipeline *.github/workflows/localstack-test.yml* percebi que era possível seguir com ela no projeto dentro do prazo
 
+### 3. API
+- Em primeiro momento não levei em consideração o código em si pois foquei na infraestrutura e provisionamento. Logo, escolhi um dos primeiros repositórios do Github que funcionasse bem ao fazer as requisições. Mas pensando com mais calma agora, eu teria escolhido uma aplicação em Laravel pois acredito ser é mais próximo de uma API em produção. E provavelmente é possível gerar o binário de produção (como um /dist do NodeJS).
+- Pesquisando, também encontrei features interessantes para executar o processo da aplicação como um Daemon no próprio Dockerfile utilizando FPM e instalação de dependencias adicionais através de docker-php-ext-install. Mas não conseguirei me aprofundar em ambos os tópicos no momento. </br>
+Gostaria de executar como um Daemon sim, pois confesso que usar o comando de start no Entrypoint não me parece 100% adequado, acredito que a abordagem do Daemon rodar o processo em background é melhor. Mas com meus conhecimento atuais, não conseguiria implementar isso rapidamente.
+
 </br>
 
 ## Timeline de Ações
@@ -24,7 +29,7 @@ Todos os direitos reservados da API: https://github.com/FarrelAD/Basic-PHP-RESTf
 [X] Escolher repositorio PHP para clonar </br>
 [X] Executar API PHP com sqlite </br>
 [X] Reservar direitos ao criador do repositório da API </br> 
-[ ] Criar Dockerfile </br>
+[X] Criar Dockerfile </br>
 [ ] Criar conta no Docker Hub </br>
 [ ] Criar CI para publicar a imagem no registro público
 
@@ -32,7 +37,7 @@ Todos os direitos reservados da API: https://github.com/FarrelAD/Basic-PHP-RESTf
 [X] Instalar e iniciar LocalStack na Action </br>
 [X] Criar resource de teste com TF referenciando o LocalStack </br>
 [X] Testar aws cli com localstack </br>
-[ ] Criar arquivo de definição de infraestrutura cluster EKS </br>
-[ ] Testar kubectl CLI para manusear infraestrutura </br>
+[X] Criar arquivo de definição de infraestrutura cluster EKS </br>
+[X] Testar kubectl CLI para manusear infraestrutura </br>
 [ ] Subir pod de teste para validar deploy da infra </br>
 [ ] Validar cluster EKS </br>
