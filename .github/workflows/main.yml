@@ -36,7 +36,6 @@ jobs:
           # only-fixed: true
           only-severities: critical
           command: quickview,cves
-          output: cves.json
           image: teste
 
       - name: Docker Scout SBOM
@@ -52,10 +51,10 @@ jobs:
           command: recommendations
           image: teste
 
-      - name: Upload Docker Scout SARIF Report 
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: /home/runner/work/php-containerized-eks/php-containerized-eks/cves.json
+      # - name: Upload Docker Scout SARIF Report 
+      #   uses: github/codeql-action/upload-sarif@v3
+      #   with:
+      #     sarif_file: /home/runner/work/php-containerized-eks/php-containerized-eks/cves.json
       
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
