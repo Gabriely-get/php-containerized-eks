@@ -58,6 +58,8 @@ jobs:
       
       - uses: actions/checkout@v5
       - run: cd Basic-PHP-RESTful-API
+      - name: List workspace contents
+        run: ls -R /github/workspace
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
         env:
