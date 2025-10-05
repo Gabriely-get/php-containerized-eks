@@ -68,7 +68,7 @@ jobs:
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: snyk.sarif
+          sarif_file: /home/runner/work/php-containerized-eks/php-containerized-eks/snyk.sarif
 
       - name: Scan Image w/ Sarif
         uses: anchore/scan-action@v3
