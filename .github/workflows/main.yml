@@ -41,7 +41,8 @@ jobs:
 
       - name: Test
         run: |
-          docker run -d --name teste teste
+          docker run -dp 8000:8000 --name teste teste
+          docker ps
           curl -X POST http://0.0.0.0:8000/api/users -d "name=John Doe&age=30&job=Developer"
           docker rm -f teste
 
