@@ -45,7 +45,9 @@ jobs:
           command: sbom
           image: teste
           output: sbom.sarif
-
+      - run: |
+          pwd
+          ls
       - name: Docker Scout Recommendations
         uses: docker/scout-action@v1
         with:
@@ -55,7 +57,20 @@ jobs:
       - name: Upload Docker Scout SARIF Report 
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
+          sarif_file: sbom.sarif
+      
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/php@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --sarif-file-output=snyk.sarif
+      
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
 
       - name: Scan Image w/ Sarif
         uses: anchore/scan-action@v3
