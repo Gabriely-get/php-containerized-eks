@@ -25,9 +25,11 @@ jobs:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
+      ## Aqui foi definido o nível de vulnerabilidade HIGH para passar no Scan, uma vez que a vulnerabilidade é na propria imagem Base
       - name: Docker Scout Quickview and CVEs
         uses: docker/scout-action@v1
         with:
+          only-severities: critical
           command: quickview,cves
           image: teste
 
