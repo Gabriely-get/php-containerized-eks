@@ -56,12 +56,15 @@ jobs:
       #   with:
       #     sarif_file: /home/runner/work/php-containerized-eks/php-containerized-eks/cves.json
       
+      - uses: actions/checkout@v5
+      - run: cd Basic-PHP-RESTful-API
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        # with:
-        #   args: --sarif-file-output=snyk.sarif
+        with:
+          args: --sarif-file-output=snyk.sarif
+      - run: ls
 
       # - name: Upload result to GitHub Code Scanning
       #   uses: github/codeql-action/upload-sarif@v3
