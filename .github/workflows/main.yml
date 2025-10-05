@@ -41,7 +41,9 @@ jobs:
 
       - name: Test
         run: |
-          docker run --rm teste
+          docker run -d --name teste teste
+          curl -X POST http://0.0.0.0:8000/api/users -d "name=John Doe&age=30&job=Developer"
+          docker rm -f teste
 
       - name: Build and push
         uses: docker/build-push-action@v6
