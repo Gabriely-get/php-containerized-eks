@@ -5,7 +5,7 @@ ADD composer.json .
 RUN composer install --no-ansi --no-dev --no-interaction  --no-plugins --no-progress --no-scripts --optimize-autoloader
 RUN ls -a
 
-FROM php:7.4.33-zts-alpine3.16 AS final
+FROM php:8.3-zts-alpine AS final
 # FROM php:7.2.1-fpm
 
 WORKDIR /home/apiuser
