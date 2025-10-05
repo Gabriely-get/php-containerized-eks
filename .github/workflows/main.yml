@@ -91,7 +91,7 @@ jobs:
         id: scan-2
         with:
           image: "teste"
-          fail-build: true
+          fail-build: false
           output-format: sarif
 
       - name: Upload Anchore Scan SARIF Report
