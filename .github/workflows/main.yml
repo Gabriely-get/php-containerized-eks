@@ -28,7 +28,13 @@ jobs:
       ## Aqui foi definido o nível de vulnerabilidade HIGH para passar no Scan, uma vez que a vulnerabilidade é na propria imagem Base
       - name: Docker Scout Quickview and CVEs
         uses: docker/scout-action@v1
+        id: scan
         with:
+          # command: cves,recommendations,compare
+          # to-latest: true
+          # ignore-base: true
+          # ignore-unchanged: true
+          # only-fixed: true
           only-severities: critical
           command: quickview,cves
           image: teste
@@ -49,11 +55,11 @@ jobs:
       - name: Upload Docker Scout SARIF Report 
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: scout.sarif
+          sarif_file: ${{ steps.scan.outputs.sarif }}
 
       - name: Scan Image w/ Sarif
         uses: anchore/scan-action@v3
-        id: scan
+        id: scan-2
         with:
           image: "teste"
           fail-build: true
@@ -62,7 +68,7 @@ jobs:
       - name: Upload Anchore Scan SARIF Report
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
+          sarif_file: ${{ steps.scan-2.outputs.sarif }}
       
 
   build:
