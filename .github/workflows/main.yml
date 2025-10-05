@@ -29,21 +29,24 @@ jobs:
       - name: Validate build configuration
         uses: docker/build-push-action@v6
         with:
+          context: ./Basic-PHP-RESTful-API
           call: check
 
       - name: Build and export to Docker
         uses: docker/build-push-action@v6
         with:
+          context: ./Basic-PHP-RESTful-API
           load: true
-          tags: ${{ env.TEST_TAG }}
+          tags: "teste"
 
       - name: Test
         run: |
-          docker run --rm ${{ env.TEST_TAG }}
+          docker run --rm teste
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: ./Basic-PHP-RESTful-API
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ vars.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
