@@ -56,10 +56,10 @@ jobs:
       #   with:
       #     sarif_file: /home/runner/work/php-containerized-eks/php-containerized-eks/cves.json
       
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@master
       - run: cd Basic-PHP-RESTful-API
-      - name: List workspace contents
-        run: ls -R /github/workspace
+      # - name: List workspace contents
+      #   run: ls -R /github/workspace
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
         env:
