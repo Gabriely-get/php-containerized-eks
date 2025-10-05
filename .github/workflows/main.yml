@@ -94,10 +94,10 @@ jobs:
           fail-build: false
           output-format: sarif
 
-      - name: Upload Anchore Scan SARIF Report
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ${{ steps.scan-2.outputs.sarif }}
+      # - name: Upload Anchore Scan SARIF Report
+      #   uses: github/codeql-action/upload-sarif@v3
+      #   with:
+      #     sarif_file: ${{ steps.scan-2.outputs.sarif }}
       
 
   build:
