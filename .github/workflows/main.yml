@@ -95,7 +95,7 @@ jobs:
           output-format: sarif
 
       - name: Upload Anchore Scan SARIF Report
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: ${{ steps.scan-2.outputs.sarif }}
       
