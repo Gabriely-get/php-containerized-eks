@@ -45,7 +45,7 @@ jobs:
           image: teste
 
       - name: Upload Docker Scout SARIF Report 
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: scout.sarif
 
@@ -58,7 +58,7 @@ jobs:
           output-format: sarif
 
       - name: Upload Anchore Scan SARIF Report
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
       
